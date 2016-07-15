@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         setDefault();
+
+        startActivity(new Intent(this, splashactivity.class));
     }
 
     private void setDefault() {
@@ -37,11 +40,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
        /* int fcheck=pref.getInt("isfirst",-1);
         if(fcheck==-1) {
+
+            pref.edit().putInt("isfirst", 1).apply();
             Intent intent=null;
             intent = new Intent(MainActivity.this, PollActivity.class);
             startActivity(intent);
         }
         else */
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
     }
 
     @Override

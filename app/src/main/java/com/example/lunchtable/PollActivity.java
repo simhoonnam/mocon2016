@@ -1,6 +1,5 @@
 package com.example.lunchtable;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -15,6 +14,5 @@ public class PollActivity extends AppCompatActivity{
     }
 
     private void setDefault() {
-        Intent intent=new Intent(this.getIntent());
     }
 }
