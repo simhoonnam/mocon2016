@@ -9,7 +9,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/main_rice"/>
+        android:src="@drawable/main_rice"
+        android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/textresult"
         android:layout_width="match_parent"
@@ -36,10 +37,10 @@
         android:text="lockactivity" />
 
 
-    //com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
     android:id="@+id/bottom_navigation"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="end|bottom"//
+    android:layout_gravity="bottom"/>
 
 </LinearLayout>

@@ -1,8 +1,12 @@
 package com.example.lunchtable;
 
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,7 +15,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
 public class lockActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button back;
+    Button back,cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,9 @@ public class lockActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setDefault() {
         back =(Button) findViewById(R.id.backbutton);
+        cc= (Button)findViewById(R.id.click);
         back.setOnClickListener(this);
+        cc.setOnClickListener(this);
 
 
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
@@ -59,6 +65,9 @@ public class lockActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.backbutton :
                 finish();
+                break;
+            case R.id.click :
+                break;
         }
     }
 }
