@@ -3,60 +3,134 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="7">
+    android:weightSum="9">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="1"
-        android:text="가족들과 평소에 어느정도 같이 식사를 하나요?" />
+        android:text="가족들과 평소에 언제 만나서 식사를 하나요?"
+        android:textSize="18dp"
+        android:textColor="#BA4627"
+        android:gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="1"
-        android:weightSum="9">
+        android:layout_weight="1">
         <TextView
-            android:layout_width="1dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="아침"
-            android:layout_weight="2"
-            android:textSize="30dp"
+            android:text="  아침    "
+            android:textSize="20dp"
             android:gravity="center_vertical"/>
         <CheckBox
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
         <TextView
-            android:layout_width="1dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="점심"
-            android:textSize="30dp"
-            android:gravity="center_vertical"
-            android:layout_weight="2"/>
-        <CheckBox
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:text="저녁"
-            android:layout_weight="2"
-            android:textSize="30dp"
+            android:text="  점심  "
+            android:textSize="20dp"
             android:gravity="center_vertical"/>
         <CheckBox
-            android:layout_width="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:text="  저녁    "
+            android:textSize="20dp"
+            android:gravity="center_vertical"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
+        android:layout_weight="6"
+        android:weightSum="8"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:textSize="20dp"
+            android:textColor="#BA4627"
+            android:text="몇시간 정도 드시나요?"
+            android:layout_weight="1"
+            android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="7"
+                android:orientation="horizontal"
+                android:weightSum="5">
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30분 미만"
+                        android:textSize="23dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30분~1시간"
+                        android:textSize="23dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1~2시간"
+                        android:textSize="23dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2시간 이상"
+                        android:textSize="23dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:id="@+id/eatingtimeradiogroup"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        >
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ttd" />
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tto"/>
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ot"/>
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tu"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_weight="1">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="완료"
-            />
+            android:id="@+id/backtmain"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -3,50 +3,36 @@ package com.example.lunchtable;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.IdRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+
 import java.util.Calendar;
+
+import es.dmoral.prefs.Prefs;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView timetextview;
     Button tknow,tcal;
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+    Button locktest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
         setDefault();
 
         startActivity(new Intent(this, splashactivity.class));
-    }
-
-    private void setDefault() {
-        timetextview=(TextView)findViewById(R.id.textresult);
-        tknow = (Button) findViewById(R.id.buttonknow);
-        tcal = (Button) findViewById(R.id.buttoncal);
-        tknow.setOnClickListener(this);
-        tcal.setOnClickListener(this);
-
-        pref = getSharedPreferences("helloworld", MODE_PRIVATE);
-        editor = pref.edit();
-
-       /* int fcheck=pref.getInt("isfirst",-1);
-        if(fcheck==-1) {
-
-            pref.edit().putInt("isfirst", 1).apply();
-            Intent intent=null;
-            intent = new Intent(MainActivity.this, PollActivity.class);
-            startActivity(intent);
-        }
-        else */
     }
 
     @Override
@@ -56,14 +42,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    private void setDefault() {
+        timetextview = (TextView) findViewById(R.id.textresult);
+        tknow = (Button) findViewById(R.id.buttonknow);
+        tcal = (Button) findViewById(R.id.buttoncal);
+        locktest =(Button) findViewById(R.id.lockactivitybutton);
+        tknow.setOnClickListener(this);
+        tcal.setOnClickListener(this);
+        locktest.setOnClickListener(this);
+
+        if(Prefs.with(this).readBoolean("isfirst", true)) {
+
+            Prefs.with(this).writeBoolean("isfirst",false);
+            Intent intent=null;
+            intent = new Intent(MainActivity.this, PollActivity.class);
+            startActivity(intent);
+        }
+
+        AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.mipmap.ic_launcher, R.color.colorPrimary);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.mipmap.ic_launcher, R.color.colorPrimary);
+
+        bottomNavigation.addItem(item1);
+        bottomNavigation.addItem(item2);
+
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                switch (position) {
+                    case 0 :
+                        break;
+                    case 1 :
+                        Intent intent=null;
+                        intent = new Intent(MainActivity.this, lockActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
+        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
+            @Override public void onPositionChange(int y) {
+                // Manage the new y position
+            }
+        });
+
+    }
+
     @Override
     public void onClick(View view) {
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.buttonknow:
                 timeknow();
                 break;
             case R.id.buttoncal:
                 timecal();
+                break;
+            case R.id.lockactivitybutton:
+                startActivity(new Intent(MainActivity.this, lockActivity.class));
                 break;
         }
     }
